@@ -20,7 +20,12 @@ export class WorkoutService {
   }
 
   addWorkout(workout:Workout){
-    return http.post()
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    return this.http.post(this.workoutsUrl + '?apiKey=' + this.apiKey,
+                      JSON.stringify(workout),
+                      {headers: headers})
+              .map( res => res.json());
   }
 
 

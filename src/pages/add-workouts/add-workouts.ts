@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Workout} from "../../classes/Workout.class";
 import {WorkoutService} from "../../app/services/workout.service";
+import {WorkoutsPage} from "../workouts/workouts";
 
 
 @Component({
@@ -62,7 +63,12 @@ export class AddWorkoutsPage {
 
   onSubmit(workout: Workout){
     console.log(workout)
-
+    this.woService.addWorkout(workout).subscribe(
+      res => {
+        console.log(res);
+        this.navCtrl.push(WorkoutsPage);
+      }
+    )
   }
 
 }
