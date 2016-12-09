@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
   template:`
   <ion-header>
     <ion-navbar>
-      <ion-title>Home</ion-title>
+      <ion-title>Workouts</ion-title>
     </ion-navbar>
   </ion-header>
   
