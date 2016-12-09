@@ -40,10 +40,9 @@ import {WorkoutsPage} from "../workouts/workouts";
             <ion-option value="Aerobics">Aerobics</ion-option>
           </ion-select>
        </ion-item>
-       
-       <ion-item>
-          <button ion-button round outline type="submit">Add Workout</button>
-       </ion-item>
+          <br><br><br>
+          <button ion-button round block large outline type="submit">Add Workout</button>
+
        
       </ion-list>
     </form>
@@ -66,8 +65,10 @@ export class AddWorkoutsPage {
     this.woService.addWorkout(workout).subscribe(
       res => {
         console.log(res);
-        this.navCtrl.push(WorkoutsPage);
-      }
+
+      },
+      err => console.error(err),
+      () =>  this.navCtrl.push(WorkoutsPage)
     )
   }
 
