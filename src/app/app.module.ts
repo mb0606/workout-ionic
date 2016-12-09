@@ -9,6 +9,7 @@ import {WorkoutsPage} from "../pages/workouts/workouts";
 import {AddWorkoutsPage} from "../pages/add-workouts/add-workouts";
 import {WorkoutService} from "./services/workout.service";
 import {HttpModule} from "@angular/http";
+import {WorkoutDetailsPage} from "../pages/workout-details/workout-details";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {HttpModule} from "@angular/http";
     HomePage,
     TabsPage,
     WorkoutsPage,
-    AddWorkoutsPage
+    AddWorkoutsPage,
+    WorkoutDetailsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -32,7 +34,8 @@ import {HttpModule} from "@angular/http";
     HomePage,
     TabsPage,
     WorkoutsPage,
-    AddWorkoutsPage
+    AddWorkoutsPage,
+    WorkoutDetailsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, WorkoutService]
 })

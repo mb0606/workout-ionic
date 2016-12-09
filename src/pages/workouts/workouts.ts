@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
 import {WorkoutService} from "../../app/services/workout.service";
+import {Workout} from "../../classes/Workout.class";
+import {WorkoutDetailsPage} from "../workout-details/workout-details";
 
 @Component({
   selector: 'page-workouts',
@@ -11,24 +13,38 @@ import {WorkoutService} from "../../app/services/workout.service";
       <ion-title>Workouts</ion-title>
     </ion-navbar>
   </ion-header>
-  
   <ion-content padding>
-    <h2>Welcome to WorkoutLog!!</h2>
-    <p>
-      WE will get you fit !
-    </p>
-    <p>
-      Take a look at the <code>src/pages/</code> directory to add or change tabs,
-      update any existing page or create new pages.
-    </p>
+    <h2>Workouts</h2>
+    <ion-list>
+      <ion-item *ngFor="let workout of workouts" (click)="workoutSelected($event, workout)">
+      {{workout.title}}      
+      </ion-item>
+    </ion-list>
   </ion-content>
 
 `
 })
-export class WorkoutsPage {
+export class WorkoutsPage implements OnInit{
+  workouts: Workout[]
 
   constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               private woService: WorkoutService) {
   }
+  ngOnInit(){
+    this.woService.getWorkouts().subscribe(
+      workouts => {
+        this.workouts = workouts;
+      }
+    )
+  }
+
+  workoutSelected(event, workout){
+    console.log(workout)
+    this.navCtrl.push(WorkoutDetailsPage, {
+      workout: workout
+    });
+  }
+
 
 }

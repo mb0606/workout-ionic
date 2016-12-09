@@ -9,7 +9,7 @@ import { API_KEY } from '../../key.config'
 @Injectable()
 export class WorkoutService {
   private apiKey:string = API_KEY;
-  private workoutsUrl:string = 'https://api.mlab.com/api/1/databases';
+  private workoutsUrl = 'https://api.mlab.com/api/1/databases/my-workouts-dev/collections/workouts';
 
   constructor(private http: Http) { }
 
