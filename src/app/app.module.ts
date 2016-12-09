@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {WorkoutsPage} from "../pages/workouts/workouts";
 import {AddWorkoutsPage} from "../pages/add-workouts/add-workouts";
+import {WorkoutService} from "./services/workout.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {AddWorkoutsPage} from "../pages/add-workouts/add-workouts";
     AddWorkoutsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,6 +34,6 @@ import {AddWorkoutsPage} from "../pages/add-workouts/add-workouts";
     WorkoutsPage,
     AddWorkoutsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, WorkoutService]
 })
 export class AppModule {}
